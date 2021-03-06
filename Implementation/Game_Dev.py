@@ -63,6 +63,5 @@ while True:
             turn_point = 0
 
 
-
 # 출력
 print(count)
