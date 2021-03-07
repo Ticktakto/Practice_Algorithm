@@ -1,4 +1,3 @@
-from collections import deque
 
 # 인풋 선언
 n, m = map(int, input().split())

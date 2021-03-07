@@ -30,18 +30,14 @@ def bfs():
                 continue
             if arr_map[tempX][tempY] == 0:
                 continue
-            
-            
+                        
             if arr_map[tempX][tempY] == 1:
                 arr_map[tempX][tempY] = arr_map[x][y] + 1
                 queue.append((tempX,tempY))
                 
     return arr_map[n-1][m-1]
 
-
-
 # 알고리즘 수행
-
 count = bfs()
 
 # 출력
