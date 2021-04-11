@@ -19,6 +19,7 @@ for i in range(t):
         arr_map[0][j] += max(arr_map[1][j - 1], arr_map[1][j - 2])
         arr_map[1][j] += max(arr_map[0][j - 1], arr_map[0][j - 2])
 
+    # 여전히 점화식을 얻는 연습이 덜 된 것 같다. 최소&최대 유형을 더 연습해보자.
     # 규칙을 못 구했음, dp를 input 형태 그대로 사용하는 줄 몰랐음.
     print(max(arr_map[0][n - 1], arr_map[1][n - 1]))
 
