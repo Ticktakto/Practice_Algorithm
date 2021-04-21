@@ -1,3 +1,4 @@
+#Stack
 import sys
 
 n = int(input())
