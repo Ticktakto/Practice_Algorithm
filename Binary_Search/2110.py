@@ -9,26 +9,20 @@ for _ in range(n):
 house_.sort()
 start, end = 1, house_[-1] - house_[0]
 
-# 해당 간격의 범위에 집(원소)이 있는지 검사, get count (이걸 구현하지 못했음!)
-def get_house(gap):
-    count, house_pointer = 1, house_[0]
-
-    for i in range(1,n):
-        if house_pointer + gap <= house_[i]:
-            count += 1
-            house_pointer = house_[i]
-    
-    return count
-
 res = 0
-
 # 반복문 이진 탐색
 while start <= end:
     mid = (start + end) // 2
-
+    prev_, count = house_[0], 1
+    # 집 간 거리가 간격보다 큰지 작은지 조사 -> 집 간 거리가 간격보다 더 크면 해당 간격에 상관없이 배정한다. 
+    for tmp in house_[1:]:
+        if (tmp - prev_) >= mid:
+            count += 1
+            prev_ = tmp
+    
     # c보다 많을수록(같거나), gap을 증가! => 인접된 공유기 간 거리가 max하는 방향으로 순회하게 된다.
-    if get_house(mid) >= c:
-        res = mid
+    if count >= c:
+        res = max(res, mid)
         start = mid + 1
     # 아니면 gap을 감소
     else:
