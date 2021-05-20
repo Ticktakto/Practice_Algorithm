@@ -1,0 +1,28 @@
+# https://claude-u.tistory.com/192
+# python3은 시간 초과! -> visited 사용해서 시간복잡도가 n임..
+import sys
+
+node = int(input())
+node_graph = [[] for _ in range(node + 1)]
+parent = [[] for _ in range(node + 1)]
+
+#트리를 그래프 형태로 생성
+for _ in range(node - 1):
+    i, j = map(int, sys.stdin.readline().split())
+    node_graph[i].append(j)
+    node_graph[j].append(i)
+
+#DFS나 BFS나 무관 (visited 대신 remove로 해당 노드를 지우면서 탐색..)
+def dfs(graph_list, start, parent):
+    stack = [start]
+    
+    while stack:
+        node = stack.pop()
+        for i in graph_list[node]:
+            parent[i].append(node)
+            stack.append(i)
+            graph_list[i].remove(node)
+    return parent
+
+for i in list(dfs(node_graph, 1, parent))[2:]:
+    print(i[0])
